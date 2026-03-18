@@ -1,4 +1,6 @@
-export default function VansSkeleton() {
+import React from 'react'
+
+function VansSkeleton() {
   return (
     <>
       <div className="flex gap-4">
@@ -18,3 +20,5 @@ export default function VansSkeleton() {
     </>
   )
 }
+
+export default React.memo(VansSkeleton)

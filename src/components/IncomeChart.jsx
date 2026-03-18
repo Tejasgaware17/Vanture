@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   LineChart,
   Line,
@@ -9,7 +10,7 @@ import {
 } from 'recharts'
 import { formatAmount } from '../utils/money'
 
-export default function IncomeChart({ chartData, minAmount, maxAmount }) {
+function IncomeChart({ chartData, minAmount, maxAmount }) {
   return (
     <div
       className="bg-white p-6 rounded-lg shadow-sm border border-background-dark"
@@ -58,3 +59,5 @@ export default function IncomeChart({ chartData, minAmount, maxAmount }) {
     </div>
   )
 }
+
+export default React.memo(IncomeChart)

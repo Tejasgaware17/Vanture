@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
+import React from 'react'
 import VanBadge from '../../components/VanBadge'
 
-export default function VanCard({ van, linkState }) {
+function VanCard({ van, linkState }) {
   return (
     <Link to={`/vans/${van.id}`} state={linkState} className="block p-1 rounded-lg">
       <img
@@ -23,3 +24,5 @@ export default function VanCard({ van, linkState }) {
     </Link>
   )
 }
+
+export default React.memo(VanCard)
