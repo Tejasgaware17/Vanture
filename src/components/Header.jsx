@@ -16,11 +16,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background">
       <div className="container-app flex items-center justify-between py-4">
-        <NavLink
-          to="/"
-          className="text-lg sm:text-xl font-extrabold text-text"
-          aria-label="Vanture Home"
-        >
+        <NavLink to="/" className="text-lg sm:text-xl font-extrabold text-text">
           VANTURE
         </NavLink>
 
@@ -31,11 +27,11 @@ export default function Header() {
 
           {!isLoggedIn ? (
             <NavLink to="/login" aria-label="Login">
-              <img src={userIcon} alt="Login icon" className="size-6" />
+              <img src={userIcon} alt="" aria-hidden="true" className="size-6" decoding="async" />
             </NavLink>
           ) : (
             <button type="button" onClick={handleLogout} aria-label="Logout">
-              <img src={logoutIcon} alt="Logout icon" className="size-6" />
+              <img src={logoutIcon} alt="" aria-hidden="true" className="size-6" decoding="async" />
             </button>
           )}
         </nav>
