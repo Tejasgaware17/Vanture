@@ -1,4 +1,5 @@
 import { useLoaderData, Link, Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 import NavItem from '../components/NavItem'
 
 export default function HostVanDetailLayout() {
@@ -54,7 +55,9 @@ export default function HostVanDetailLayout() {
         <NavItem to="photos">Photos</NavItem>
       </nav>
 
-      <Outlet context={{ van }} />
+      <Suspense fallback={<div className="p-4">Loading...</div>}>
+        <Outlet context={{ van }} />
+      </Suspense>
     </section>
   )
 }
