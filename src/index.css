@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+:root {
+  --color-van-simple: #e17654;
+  --color-van-rugged: #115e59;
+  --color-van-luxury: #0e0d0d;
+}
+
+@theme {
+  --color-primary: #ff8c38;
+  --color-primary-dark: #e6762b;
+  --color-primary-light: #ffe1bc;
+
+  --color-background: #fff7ed;
+  --color-background-dark: #fde6d2;
+
+  --color-text: #1f2937;
+  --color-text-gray: #585d67;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #f9fafb;
+  }
+  body {
+    @apply antialiased flex min-h-screen flex-col;
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+}
+
+@utility container-app {
+  @apply mx-auto max-w-6xl px-6;
+}
+
+@utility container-host {
+  @apply mt-2 space-y-8
+}
+
+@utility btn-primary {
+  @apply inline-block rounded-md bg-primary px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-70;
+}
