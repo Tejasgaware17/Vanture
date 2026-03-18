@@ -14,7 +14,6 @@ export default function VanDetail() {
         to={`..${search}`}
         relative="path"
         className="underline flex items-center gap-2 text-lg"
-        aria-label={`Back to ${type} vans`}
       >
         ← Back to {type} vans
       </Link>
@@ -45,7 +44,7 @@ export default function VanDetail() {
 
           <p className="text-text-light leading-relaxed">{van.description}</p>
 
-          <button className="btn-primary" aria-label={`Rent ${van.name} camper van`}>
+          <button className="btn-primary">
             Rent this van
           </button>
         </div>
