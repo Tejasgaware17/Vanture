@@ -4,7 +4,13 @@ import VanBadge from '../../components/VanBadge'
 export default function VanCard({ van, linkState }) {
   return (
     <Link to={`/vans/${van.id}`} state={linkState} className="block p-1 rounded-lg">
-      <img src={van.imageUrl} alt={`${van.name} camper van`} className="w-full rounded-lg" />
+      <img
+        src={van.imageUrl}
+        alt={`${van.name} camper van`}
+        className="w-full rounded-lg"
+        loading="lazy"
+        decoding="async"
+      />
 
       <h2 className="mt-2 sm:mt-4 text-xl font-semibold">{van.name}</h2>
 

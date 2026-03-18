@@ -11,6 +11,8 @@ export default function Home() {
         src={heroBg}
         alt="Scenic road with a travel van ready for adventure"
         className="absolute inset-0 w-full h-full object-cover"
+        decoding="async"
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-black/40"></div>
 

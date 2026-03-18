@@ -9,6 +9,8 @@ export default function About() {
           src={aboutHero}
           alt="Travel van parked in a scenic landscape"
           className="h-full w-full object-cover"
+          decoding="async"
+          fetchpriority="high"
         />
       </div>
 
