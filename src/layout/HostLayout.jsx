@@ -4,7 +4,7 @@ import NavItem from '../components/NavItem'
 
 export default function HostLayout() {
   return (
-    <section className="container-app max-w-4xl mx-auto py-8" aria-labelledby="host-heading">
+    <main className="container-app max-w-4xl mx-auto py-8">
       <h1 id="host-heading" className="sr-only">
         Host dashboard navigation
       </h1>
@@ -21,6 +21,6 @@ export default function HostLayout() {
       <Suspense fallback={<div className="p-4">Loading...</div>}>
         <Outlet />
       </Suspense>
-    </section>
+    </main>
   )
 }

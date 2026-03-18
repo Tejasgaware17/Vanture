@@ -13,7 +13,7 @@ export default function MainLayout() {
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="grow" role="main">
+      <main id="main-content" className="grow">
         <Suspense fallback={<div className="p-4">Loading...</div>}>
           <Outlet />
         </Suspense>

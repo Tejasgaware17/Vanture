@@ -6,13 +6,8 @@ export default function HostVanDetailLayout() {
   const van = useLoaderData()
 
   return (
-    <section className="container-host">
-      <Link
-        to=".."
-        relative="path"
-        className="underline flex items-center gap-2 text-lg my-4"
-        aria-label="Back to all vans"
-      >
+    <main className="container-host">
+      <Link to=".." relative="path" className="underline flex items-center gap-2 text-lg my-4">
         ← Back to all vans
       </Link>
 
@@ -58,6 +53,6 @@ export default function HostVanDetailLayout() {
       <Suspense fallback={<div className="p-4">Loading...</div>}>
         <Outlet context={{ van }} />
       </Suspense>
-    </section>
+    </main>
   )
 }
