@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroBg from '../assets/Images/hero.jpg'
+import heroBg from '../assets/Images/hero.webp'
 
 export default function Home() {
   return (

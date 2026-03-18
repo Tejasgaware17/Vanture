@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import aboutHero from '../assets/Images/about-hero.jpg'
+import aboutHero from '../assets/Images/about-hero.webp'
 
 export default function About() {
   return (
