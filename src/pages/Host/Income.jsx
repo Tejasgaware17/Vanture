@@ -6,20 +6,25 @@ import { formatAmount } from '../../utils/money'
 export default function Income() {
   const { income, transactions } = useLoaderData()
 
-  const chartData = transactions.map(tx => ({
-    date: tx.date,
-    amount: Number(tx.amount),
-  }))
+  const chartData = useMemo(
+    () =>
+      transactions.map(tx => ({
+        date: tx.date,
+        amount: Number(tx.amount),
+      })),
+    [transactions]
+  )
 
   const { minAmount, maxAmount } = useMemo(() => {
     if (chartData.length === 0) return { minAmount: 0, maxAmount: 0 }
 
-    const amounts = chartData.map(d => d.amount)
-
-    return {
-      minAmount: Math.min(...amounts),
-      maxAmount: Math.max(...amounts),
-    }
+    return chartData.reduce(
+      (acc, curr) => ({
+        minAmount: curr.amount < acc.minAmount ? curr.amount : acc.minAmount,
+        maxAmount: curr.amount > acc.maxAmount ? curr.amount : acc.maxAmount,
+      }),
+      { minAmount: chartData[0].amount, maxAmount: chartData[0].amount }
+    )
   }, [chartData])
 
   return (
@@ -50,7 +55,7 @@ export default function Income() {
         >
           <Suspense
             fallback={
-              <div className="h-65 flex items-center justify-center">Loading chart...</div>
+              <div className="h-80 flex items-center justify-center">Loading chart...</div>
             }
           >
             <IncomeChart chartData={chartData} minAmount={minAmount} maxAmount={maxAmount} />

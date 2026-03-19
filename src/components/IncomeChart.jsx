@@ -13,7 +13,7 @@ import { formatAmount } from '../utils/money'
 function IncomeChart({ chartData, minAmount, maxAmount }) {
   return (
     <div
-      className="bg-white p-6 rounded-lg shadow-sm border border-background-dark"
+      className="bg-white p-6 rounded-lg shadow-sm border border-background-dark h-80"
       aria-labelledby="income-trend-heading"
       aria-label="Line chart showing income over time"
     >
