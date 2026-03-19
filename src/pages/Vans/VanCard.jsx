@@ -11,6 +11,9 @@ function VanCard({ van, linkState }) {
         className="w-full rounded-lg"
         loading="lazy"
         decoding="async"
+        width="400"
+        height="300"
+        sizes="(max-width: 640px) 45vw, 400px"
       />
 
       <h2 className="mt-2 sm:mt-4 text-xl font-semibold">{van.name}</h2>

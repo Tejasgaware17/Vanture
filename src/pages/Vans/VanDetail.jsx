@@ -24,6 +24,10 @@ export default function VanDetail() {
             src={van.imageUrl}
             alt={`${van.name} camper van`}
             className="rounded-lg w-full object-cover"
+            width="800"
+            height="600"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
 
@@ -44,9 +48,7 @@ export default function VanDetail() {
 
           <p className="text-text-light leading-relaxed">{van.description}</p>
 
-          <button className="btn-primary">
-            Rent this van
-          </button>
+          <button className="btn-primary">Rent this van</button>
         </div>
       </article>
     </section>

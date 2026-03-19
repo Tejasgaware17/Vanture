@@ -28,7 +28,6 @@ export default function Vans() {
     const vanElements = displayVans.map(van => (
       <li key={van.id}>
         <VanCard
-          key={van.id}
           van={van}
           linkState={{
             search: `?${searchParams.toString()}`,
