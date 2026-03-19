@@ -1,40 +1,37 @@
 import { useLoaderData } from 'react-router-dom'
-import { useMemo } from 'react'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-} from 'recharts'
+import { useMemo, lazy, Suspense } from 'react'
+const IncomeChart = lazy(() => import('../../components/IncomeChart'))
 import { formatAmount } from '../../utils/money'
 
 export default function Income() {
   const { income, transactions } = useLoaderData()
 
-  const chartData = transactions.map(tx => ({
-    date: tx.date,
-    amount: Number(tx.amount),
-  }))
+  const chartData = useMemo(
+    () =>
+      transactions.map(tx => ({
+        date: tx.date,
+        amount: Number(tx.amount),
+      })),
+    [transactions]
+  )
 
   const { minAmount, maxAmount } = useMemo(() => {
     if (chartData.length === 0) return { minAmount: 0, maxAmount: 0 }
 
-    const amounts = chartData.map(d => d.amount)
-
-    return {
-      minAmount: Math.min(...amounts),
-      maxAmount: Math.max(...amounts),
-    }
+    return chartData.reduce(
+      (acc, curr) => ({
+        minAmount: curr.amount < acc.minAmount ? curr.amount : acc.minAmount,
+        maxAmount: curr.amount > acc.maxAmount ? curr.amount : acc.maxAmount,
+      }),
+      { minAmount: chartData[0].amount, maxAmount: chartData[0].amount }
+    )
   }, [chartData])
 
   return (
     <section className="container-host" aria-labelledby="host-income">
       <header className="flex flex-col justify-between gap-2">
         <div>
-          <h1 id="Income" className="text-2xl font-bold text-text">
+          <h1 id="income" className="text-2xl font-bold text-text">
             Your Income
           </h1>
           <p className="text-text-gray">Last 30 days</p>
@@ -56,37 +53,13 @@ export default function Income() {
           aria-labelledby="income-trend-heading"
           aria-label="Line chart showing income over time"
         >
-          <ResponsiveContainer width="100%" height={260}>
-            <LineChart
-              data={chartData}
-              margin={{ top: 5, right: 5, left: -30, bottom: 5 }}
-              accessibilityLayer
-            >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-
-              <XAxis dataKey="date" hide />
-              <YAxis
-                tick={{ fill: '#585d67', fontSize: 11 }}
-                axisLine={false}
-                tickLine={false}
-                domain={['dataMin - 50', 'dataMax + 50']}
-                interval={0}
-              />
-              <Tooltip
-                contentStyle={{ borderRadius: '8px', border: '1px solid #fde6d2' }}
-                cursor={{ stroke: 'var(--color-primary)', strokeWidth: 2 }}
-              />
-
-              <Line
-                type="monotone"
-                dataKey="amount"
-                stroke="var(--color-primary)"
-                strokeWidth={3}
-                dot={false}
-                activeDot={{ r: 6, fill: 'var(--color-primary)', ariaLabel: 'Data point' }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <Suspense
+            fallback={
+              <div className="h-80 flex items-center justify-center">Loading chart...</div>
+            }
+          >
+            <IncomeChart chartData={chartData} minAmount={minAmount} maxAmount={maxAmount} />
+          </Suspense>
 
           {chartData.length > 0 && (
             <div className="sr-only">

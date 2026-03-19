@@ -26,24 +26,25 @@ export default function Vans() {
   function renderVans(vans) {
     const displayVans = typeFilter ? vans.filter(van => van.type === typeFilter) : vans
     const vanElements = displayVans.map(van => (
-      <VanCard
-        key={van.id}
-        van={van}
-        linkState={{
-          search: `?${searchParams.toString()}`,
-          type: typeFilter,
-        }}
-      />
+      <li key={van.id}>
+        <VanCard
+          van={van}
+          linkState={{
+            search: `?${searchParams.toString()}`,
+            type: typeFilter,
+          }}
+        />
+      </li>
     ))
 
     return (
       <>
         <VanFilters typeFilter={typeFilter} handleFilterChange={handleFilterChange} />
 
-        <p className="sr-only" aria-live="polite">
+        <p className="sr-only" aria-live="polite" role="status">
           Showing {displayVans.length} vans
         </p>
-        <div className="grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-12">{vanElements}</div>
+        <ul className="grid grid-cols-2 gap-x-10 gap-y-12 sm:gap-x-12">{vanElements}</ul>
       </>
     )
   }

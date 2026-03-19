@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -12,8 +13,10 @@ export default function MainLayout() {
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="grow" role="main">
-        <Outlet />
+      <main id="main-content" className="grow">
+        <Suspense fallback={<div className="p-4">Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>

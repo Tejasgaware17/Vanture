@@ -21,7 +21,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #f9fafb;
   }
   body {
     @apply antialiased flex min-h-screen flex-col;

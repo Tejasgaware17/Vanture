@@ -12,7 +12,7 @@ export default function Error() {
   }
 
   return (
-    <section role="alert" aria-live="assertive" className="container-app py-16 text-center">
+    <section role="alert" className="container-app py-16 text-center">
       <h1 className="text-2xl font-bold mb-4">Error</h1>
       <p className="text-text-gray">{message}</p>
     </section>

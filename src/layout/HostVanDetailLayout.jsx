@@ -1,17 +1,13 @@
 import { useLoaderData, Link, Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 import NavItem from '../components/NavItem'
 
 export default function HostVanDetailLayout() {
   const van = useLoaderData()
 
   return (
-    <section className="container-host">
-      <Link
-        to=".."
-        relative="path"
-        className="underline flex items-center gap-2 text-lg my-4"
-        aria-label="Back to all vans"
-      >
+    <div className="container-host">
+      <Link to=".." relative="path" className="underline flex items-center gap-2 text-lg my-4">
         ← Back to all vans
       </Link>
 
@@ -54,7 +50,9 @@ export default function HostVanDetailLayout() {
         <NavItem to="photos">Photos</NavItem>
       </nav>
 
-      <Outlet context={{ van }} />
-    </section>
+      <Suspense fallback={<div className="p-4">Loading...</div>}>
+        <Outlet context={{ van }} />
+      </Suspense>
+    </div>
   )
 }

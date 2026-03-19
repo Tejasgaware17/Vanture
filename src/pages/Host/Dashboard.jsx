@@ -85,6 +85,8 @@ export default function Dashboard() {
                   src={van.imageUrl}
                   alt={`${van.name} van`}
                   className="w-16 h-16 rounded-md object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 <div>

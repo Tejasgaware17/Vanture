@@ -1,17 +1,18 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
+import { lazy } from 'react'
 import MainLayout from '../layout/MainLayout'
 import Error from '../components/Error'
 import NotFound from '../pages/NotFound'
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Vans from '../pages/Vans/Vans'
+const Home = lazy(() => import('../pages/Home'))
+const About = lazy(() => import('../pages/About'))
+const Vans = lazy(() => import('../pages/Vans/Vans'))
+const VanDetail = lazy(() => import('../pages/Vans/VanDetail'))
 import { vansLoader, vanDetailLoader } from '../pages/Vans/loaders'
-import VanDetail from '../pages/Vans/VanDetail'
 import HostLayout from '../layout/HostLayout'
-import Dashboard from '../pages/Host/Dashboard'
-import Income from '../pages/Host/Income'
-import HostVans from '../pages/Host/HostVans'
-import Reviews from '../pages/Host/Reviews'
+const Dashboard = lazy(() => import('../pages/Host/Dashboard'))
+const Income = lazy(() => import('../pages/Host/Income'))
+const HostVans = lazy(() => import('../pages/Host/HostVans'))
+const Reviews = lazy(() => import('../pages/Host/Reviews'))
 import {
   dashboardLoader,
   hostIncomeLoader,
@@ -20,11 +21,12 @@ import {
   hostReviewsLoader,
 } from '../pages/Host/loaders'
 import HostVanDetailLayout from '../layout/HostVanDetailLayout'
-import HostVanInfo from '../pages/Host/HostVanInfo'
-import HostVanPricing from '../pages/Host/HostVanPricing'
-import HostVanPhotos from '../pages/Host/HostVanPhotos'
+const HostVanInfo = lazy(() => import('../pages/Host/HostVanInfo'))
+const HostVanPricing = lazy(() => import('../pages/Host/HostVanPricing'))
+const HostVanPhotos = lazy(() => import('../pages/Host/HostVanPhotos'))
 import { requireAuth } from '../utils/auth'
-import Login, { loginAction } from '../pages/Login'
+const Login = lazy(() => import('../pages/Login'))
+import { loginAction } from '../pages/Login'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

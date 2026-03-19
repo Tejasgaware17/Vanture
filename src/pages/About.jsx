@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import aboutHero from '../assets/Images/about-hero.jpg'
+import aboutHero from '../assets/Images/about-hero.webp'
 
 export default function About() {
   return (
@@ -9,6 +9,8 @@ export default function About() {
           src={aboutHero}
           alt="Travel van parked in a scenic landscape"
           className="h-full w-full object-cover"
+          decoding="async"
+          fetchpriority="high"
         />
       </div>
 

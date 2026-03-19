@@ -1,10 +1,20 @@
 import { Link } from 'react-router-dom'
+import React from 'react'
 import VanBadge from '../../components/VanBadge'
 
-export default function VanCard({ van, linkState }) {
+function VanCard({ van, linkState }) {
   return (
     <Link to={`/vans/${van.id}`} state={linkState} className="block p-1 rounded-lg">
-      <img src={van.imageUrl} alt={`${van.name} camper van`} className="w-full rounded-lg" />
+      <img
+        src={van.imageUrl}
+        alt={`${van.name} camper van`}
+        className="w-full rounded-lg"
+        loading="lazy"
+        decoding="async"
+        width="400"
+        height="300"
+        sizes="(max-width: 640px) 45vw, 400px"
+      />
 
       <h2 className="mt-2 sm:mt-4 text-xl font-semibold">{van.name}</h2>
 
@@ -17,3 +27,5 @@ export default function VanCard({ van, linkState }) {
     </Link>
   )
 }
+
+export default React.memo(VanCard)

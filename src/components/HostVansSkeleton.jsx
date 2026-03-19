@@ -1,4 +1,6 @@
-export default function HostVansSkeleton() {
+import React from 'react'
+
+function HostVansSkeleton() {
   return (
     <div className="flex flex-col gap-4">
       {Array.from({ length: 3 }).map((_, i) => (
@@ -16,3 +18,5 @@ export default function HostVansSkeleton() {
     </div>
   )
 }
+
+export default React.memo(HostVansSkeleton)
